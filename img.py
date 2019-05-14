@@ -13,7 +13,7 @@ for subdir, dirs, files in os.walk(rootdir):
 	images = []
 	base = os.path.join(subdir , files[0])
 	base_img = cv2.imread(base)
-    height, width = base_img.shape[:2]
+	height, width = base_img.shape[:2]
 	base_img_gray = cv2.cvtColor(base_img, cv2.COLOR_BGR2GRAY)
 	print(base)
 	
@@ -24,7 +24,7 @@ for subdir, dirs, files in os.walk(rootdir):
 		for img in glob.glob(subdir + "/" +  dir_ + "/" + "*.JPG"):
 			test_img = cv2.imread(img)
 			test_img_gray = cv2.cvtColor(test_img, cv2.COLOR_BGR2GRAY)
-            test_img_gray = cv2.resize(test_img_gray, (width, height))
+			test_img_gray = cv2.resize(test_img_gray, (width, height))
 
 			sim_value = measure.compare_ssim(base_img_gray, test_img_gray)
 			if(sim_value > max_sim_value):
